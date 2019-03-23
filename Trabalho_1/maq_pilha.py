@@ -7,6 +7,9 @@ import sys
 # Arquivo texto
 text = sys.argv[1]
 
+# Abrindo o arquivo
+text = open(text, 'r').read()
+
 # Pilha usada para as operações
 stack = []
 
@@ -15,7 +18,10 @@ text = text.split('\n')
 
 # For em cada linha
 for line in text:
-	
+
+	# Dividi por espaço
+	line = line.split(' ')
+
 	# Se for Tamanho 2, é operação PUSH NUM
 	if len(line) == 2:
 		
@@ -23,13 +29,13 @@ for line in text:
 		num = line[1]
 
 		# Adiciona ao fim da pilha
-		stack.append(num)
+		stack.append(int(num))
 		
 	# É outra operação
 	else:
 		
 		# Operação de Print
-		if line == 'PRINT':
+		if line[0] == 'PRINT':
 
 			# Retira o ultimo da pilha
 			a = stack.pop()
@@ -48,18 +54,18 @@ for line in text:
 			a = stack.pop()
 			
 			# Operação ADD
-			if line == 'ADD':
+			if line[0] == 'ADD':
 				stack.append(a + b)
 			
 			# Operação SUB	
-			elif line == 'SUB':
+			elif line[0] == 'SUB':
 				stack.append(a - b)
 
 			# Operação MULT
-			elif line == 'MULT':
+			elif line[0] == 'MULT':
 				stack.append(a * b)
 
 			# Operação DIV
-			elif line == 'DIV':
+			elif line[0] == 'DIV':
 				stack.append(a / b)
 		
