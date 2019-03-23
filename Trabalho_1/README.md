@@ -4,3 +4,13 @@ Implementar uma máquina de pilha que execute o código gerado pelo compilador d
 
 * Código para Máquina de Pilha
 * Retorna o resultado
+
+
+## Entradas possíveis 
+
+* PUSH NUM
+* SUM 
+* SUB 
+* MULT
+* DIV 
+* PRINT
