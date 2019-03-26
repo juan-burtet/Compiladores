@@ -1,0 +1,65 @@
+Linguagem Mojica
+versão 24/05/2017
+
+----------------------------------------------
+PROG -> MAIN LFUNC
+
+MAIN -> "void" "main" "(" ")" "{" VARDECL SEQCOMANDOS "}"
+
+VARDECL -> VARDECL TIPO TOKEN_id ";"             
+	   | vazio
+
+TIPO -> "int" | "bool"
+
+SEQCOMANDOS -> SEQCOMANDOS COMANDO
+		| vazio
+
+COMANDO -> "skip();"
+	   | TOKEN_id ":=" EXPS ";" 
+	   | TOKEN_id "(" LISTAEXP ")" ";"
+	   | "if" "(" BOOLEXP ")" "{" SEQCOMANDOS "}"
+	   | "while" "(" BOOLEXP ")" "do" "{" SEQCOMANDOS "}"
+	   | "return" TIPORETURN ";"
+
+BOOLEXP -> "true" | "false" | "not" "(" BOOLEXP ")" | "and" "(" BOOLEXP ")" "(" BOOLEXP ")"
+	   | "or" "(" BOOLEXP ")" "(" BOOLEXP ")" | "leq" "(" EXPS ")" "(" EXPS ")"
+
+TIPORETURN -> EXPS 
+	      | EXPBOOL	
+
+EXPS -> TERMO | EXPS OPA TERMO
+
+TERMO -> FATOR | TERMO OPM FATOR
+
+FATOR -> TOKEN_id | TOKEN_id "(" LISTAEXP ")" | TOKEN_numliteral | "(" EXPS ")"
+
+LISTAEXP -> EXPS | LISTAEXP "," EXPS
+
+LFUNC -> FUNC LFUNC                           
+	 | vazio
+
+FUNC -> TIPO TOKEN_id "(" LISTAARG ")" "{" VARDECL SEQCOMANDOS "}"
+
+LISTAARG -> TIPO TOKEN_id | LISTAARG "," TIPO TOKEN_id
+
+
+
+=====================================
+Convenções léxicas
+^^^^^^^^^^ ^^^^^^^
+
+TOKEN_id -> letra letraoudigito* finalsublinhado*
+TOKEN_numliteral -> digitos facao_opcional expoente_opcional
+OPA -> "+" | "-"
+OPM -> "*" | "/"
+
+onde:
+letra -> [a-zA-Z]
+digito -> [0-9]
+digitos -> digito+
+facao_opcional -> (.digitos)?
+expoente_opcional -> (E (+ | -)? digitos)?
+letraoudigito -> letra | digito
+finalsublinhado -> _letraoudigito+
+letra -> [a-zA-Z]
+digito -> [0-9]
