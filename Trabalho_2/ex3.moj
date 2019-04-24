@@ -1,0 +1,26 @@
+void main(){
+	int a;
+	int b;
+	b := 20 / 4;
+
+	while(not (or (true) (true))) do{
+		a := 20.5;
+		if (leq (a) (b)){
+			a := a + 2;
+		}
+	}
+
+	nothing();
+}
+
+int nothing(){
+	skip();
+	return 2;
+}
+
+bool func_qualquer(int x){
+	if(leq (b)(37.8E-10)){
+		return false;
+	}
+	return true;
+}

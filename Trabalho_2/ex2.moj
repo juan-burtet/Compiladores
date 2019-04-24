@@ -1,0 +1,16 @@
+int foo(int a, int b){
+		return a * b;
+}
+
+int bar(int x){
+		y := 20.5E+12;
+		return y/x;
+}
+
+void main(){
+	int A20b__;
+	int z;
+	A20b__ := foo(20, 30);
+	z := bar(A20b__);
+	return 0;
+}
