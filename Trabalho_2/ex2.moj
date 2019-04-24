@@ -8,9 +8,9 @@ int bar(int x){
 }
 
 void main(){
-	int A20b__;
+	int A20b_a;
 	int z;
-	A20b__ := foo(20, 30);
-	z := bar(A20b__);
+	A20b_a := foo(20, 30);
+	z := bar(A20b_a);
 	return 0;
 }

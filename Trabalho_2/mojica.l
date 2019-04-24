@@ -11,6 +11,7 @@ MULT "*"
 DIV "/"
 SOMA "+"
 SUB "-"
+VIRGULA ","
 BRANCO [ \n\t]
 
 NOT "not"
@@ -35,7 +36,7 @@ DO "do"
 RETURN "return"
 
 FACAO [.]{DIGITO}+
-EXP_OPC ([E]({SOMA}|{SUB})?{DIGITO})?
+EXP_OPC ([E]({SOMA}|{SUB})?{DIGITO}+)?
 INTEIRO {DIGITO}+
 REAL {DIGITO}+{FACAO}{EXP_OPC}
 
@@ -72,10 +73,10 @@ OPM {MULT}|{DIV}
 {ABRE_CHAVES}         {printf("ABRE CHAVES: %s\n", yytext);}
 {FECHA_CHAVES}        {printf("FECHA CHAVES: %s\n", yytext);}
 {PONTO_VIRGULA}       {printf("PONTO E VIRGULA: %s\n", yytext);}
+{VIRGULA}             {printf("VIRGULA: %s\n", yytext);}
 
-
-{BRANCO}              { char *c; scanf("%[ \n\t]s", c); }
 {ID}			            {printf("VAR: %s\n",yytext);}
+{BRANCO}              { char *c; scanf("%[ \n\t]s", c); }
 
 
 %%
